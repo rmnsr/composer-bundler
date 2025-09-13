@@ -4,16 +4,24 @@
 
 This is especially useful for users who cannot install Composer locally but still need to build and ship dependencies.
 
----
+
 
 ## ✨ Features
 - Paste your `composer.json` in the web UI
 - Automatically runs `composer install` on the server
 - Packages the `vendor/` directory into a ZIP file
 - Download-ready bundle with autoload support
-- Simple to self-host
+- Easy to self-host:
+  - Works on any Linux/macOS machine with PHP installed
+  - Can be run using the built-in PHP development server or deployed on Apache/Nginx
 
----
+
+## ⚠️ Requirements
+
+- **PHP 8.1+**  
+- **Composer** installed on the server (used by the app to generate vendor bundles)  
+- Linux, macOS, or any system where `shell_exec()` can run Composer commands  
+
 
 ## 🚀 Installation
 
