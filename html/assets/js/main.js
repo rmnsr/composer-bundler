@@ -20,6 +20,10 @@ $(document).ready(() => {
                 if (data.file) {
                     window.location.href = `index.php?p=ajax&action=download&file=${encodeURIComponent(data.file)}`;
                 }
+                
+                if(data.error) {
+                    alert(data.error);
+                }
             },
             error: (xhr, status, error) => {
                 console.error('AJAX Error:', status, error, xhr.responseText);

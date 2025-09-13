@@ -46,16 +46,21 @@ class Bundler
 
         $json = $this->data['json'] ?? '';
         if (!is_string($json) || !@json_decode($json)) {
-            throw new \RuntimeException("Invalid JSON input.");
+            throw new \RuntimeException("Invalid JSON input." . json_last_error_msg());
         }
-        file_put_contents($destination . '/composer.json', $json);
+        file_put_contents($destination . '/composer.json', trim($json));
 
         $cmd = escapeshellcmd($this->composerBin) . ' install -d ' . escapeshellarg($destination) . ' 2>&1';
-        shell_exec($cmd);
+        $output = shell_exec($cmd);
+        if (!$output || strpos($output, 'Problem') !== false) {
+            echo json_encode(['error' => $output ?: 'Composer failed without output']);
+            return;
+        }
 
         $zipPath = $destination . '.zip';
         if ($this->compress($destination, $zipPath)) {
             echo json_encode(['file' => basename($zipPath)]);
+            return;
         }
     }
 
