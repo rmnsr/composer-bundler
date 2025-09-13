@@ -34,3 +34,14 @@ This is especially useful for users who cannot install Composer locally but stil
 
 Open http://localhost:8000
  in your browser.
+
+## Screenshot
+
+Interface:
+
+![Interface](screenshots/composer-bundler.png)
+
+
+Downloaded ZIP example:
+
+![Downloaded ZIP](screenshots/zip-file.png)
