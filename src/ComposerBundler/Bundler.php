@@ -28,7 +28,7 @@ class Bundler
 
         $this->data = $data;
         $this->tmpDir = '/tmp';
-        $this->composerBin = '/usr/local/bin/composer';
+        $this->composerBin = $this->detectComposer();
 
         if (!is_dir($this->tmpDir)) {
             mkdir($this->tmpDir, 0777, true);
@@ -106,5 +106,23 @@ class Bundler
         header('Content-Length: ' . filesize($path));
         readfile($path);
         exit;
+    }
+
+    /**
+     * Detect Composer binary in the system.
+     *
+     * @return string
+     * @throws \RuntimeException
+     */
+    private function detectComposer(): string
+    {
+        $which = trim(shell_exec('which composer 2>/dev/null'));
+        if ($which && is_executable($which)) {
+            return $which;
+        }
+
+        throw new \RuntimeException(
+            "Composer binary not found. Please install Composer or provide its path."
+        );
     }
 }
