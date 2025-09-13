@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>{{name}}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="{{jquery}}"></script>
+  <link href="{{css}}?v=1.0" rel="stylesheet" />
+  <script src="{{js}}"></script>
+</head>
+<body>
+  <div class="content">
+    <h1>{{name}}</h1>
+    <p>Paste the <code>composer.json</code> content below:</p>
+    <form name="generatorForm" id="generatorForm">
+    <textarea name="jsonInput" id="jsonInput" rows="20" cols="50">{
+    "require": {
+      "mustache/mustache": "^3.0"
+    }
+}</textarea>
+      <button type="button" name="generateBtn" id="generateBtn">
+        Generate and Download
+      </button>
+    </form>
+    <div id="loader">{{loaderText}}</div>
+  </div>
+</body>
+</html>

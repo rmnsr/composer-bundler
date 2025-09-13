@@ -1,0 +1,24 @@
+{
+    "name": "rmnsr/composer-bundler",
+    "description": "A web-based PHP application to bundle Composer libraries and download them as a ZIP",
+    "type": "project",
+    "require": {
+        "mustache/mustache": "^3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "ComposerBundler\\": "src/ComposerBundler/"
+        },
+        "files": [
+            "src/ComposerBundler/helpers.php"
+        ]
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.0"
+    },
+    "minimum-stability": "stable",
+    "license": "MIT",
+    "config": {
+        "optimize-autoloader": true
+    }
+}
